@@ -1,0 +1,39 @@
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "check_availability",
+      "description": "Get the free appointment times for a branch on a given day.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "branch": { "type": "string", "description": "Which branch the caller wants" },
+          "date": { "type": "string", "description": "The day as the caller said it, e.g. 'tomorrow', 'next monday', '5 December'" }
+        },
+        "required": ["branch", "date"]
+      }
+    },
+    "server": { "url": "https://YOUR-N8N-HOST/webhook/vapi-voice-agent" }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "book_appointment",
+      "description": "Book an appointment once the caller has confirmed every detail.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "branch": { "type": "string" },
+          "date": { "type": "string" },
+          "time": { "type": "string", "description": "e.g. '3pm', '3 baje', '15:30'" },
+          "name": { "type": "string" },
+          "phone": { "type": "string" },
+          "email": { "type": "string" },
+          "treatment": { "type": "string" }
+        },
+        "required": ["branch", "date", "time", "name", "phone"]
+      }
+    },
+    "server": { "url": "https://YOUR-N8N-HOST/webhook/vapi-voice-agent" }
+  }
+]
